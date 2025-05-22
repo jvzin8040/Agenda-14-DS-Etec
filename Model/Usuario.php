@@ -81,7 +81,7 @@ class Usuario
             die("Connection failed: " . $conn->connect_error);
         }
 
-       $sql = "INSERT INTO usuario (nome, cpf, dataNascimento, email, senha) VALUES ('" . $this->nome . "', '" . $this->cpf . "', '" . $this->dataNascimento . "', '" . $this->email . "','" . $this->senha . "')";
+        $sql = "INSERT INTO usuario (nome, cpf, dataNascimento, email, senha) VALUES ('" . $this->nome . "', '" . $this->cpf . "', '" . $this->dataNascimento . "', '" . $this->email . "','" . $this->senha . "')";
 
         // Verifica se a consulta foi bem-sucedida
         if ($conn->query($sql) === TRUE) {
@@ -135,7 +135,7 @@ class Usuario
         }
 
         $sql = "UPDATE usuario SET nome = '" . $this->nome . "', cpf = '" . $this->cpf . "', dataNascimento = '" . $this->dataNascimento . "', email='" . $this->email . "' WHERE idusuario ='" . $this->id . "'";
-       
+
         if (
             $conn->query($sql) === TRUE
         ) {
@@ -146,6 +146,6 @@ class Usuario
             return FALSE;
         }
     }
-}
 
-?>
+   
+}

@@ -149,6 +149,27 @@ switch ($_POST) {
         }
         break;
 
+    //-Redirecionar: Login Administrador -- //
+    case isset($_POST["btnLoginADM"]):
+        require_once '../Controller/AdministradorController.php';
+        $aController = new AdministradorController();
+        if ($aController->login($_POST['txtLoginADM'], $_POST['txtSenhaADM'])) {
+            include_once '../View/ADMPrincipal.php';
+        } else {
+            include_once '../View/ADMLogin.php';
+        }
+        break;
+
+    //-Redirecionar: Admin: Login -- //   
+    case isset($_POST["btnADM"]):
+        include_once '../View/ADMLogin.php';
+        break;
+
+    //-Redirecionar: Admin: Listar Cadastrados -- //
+    case isset($_POST["btnListarCadastrados"]):
+        include_once '../View/ADMListarCadastrados.php';
+        break;
+
     //-Redirecionar: Cadastro Realizado -- //
     case isset($_POST["btnCadRealizado"]):
         include_once "../View/principal.php";
@@ -167,6 +188,10 @@ switch ($_POST) {
     //-Redirecionar: Informação Excluida -- //
     case isset($_POST["btnInfExcluir"]):
         include_once "../View/principal.php";
+        break;
+
+    case isset($_POST["btnVoltar"]):
+        include_once "../View/ADMPrincipal.php";
         break;
 
     //-Redirecionar: Atualizar -- //
