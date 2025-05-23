@@ -32,17 +32,12 @@
             </div>
         </div>
         <div class="w3-row w3-section">
-            <div class="" style="">
+            <div class="">
                 <button name="btnLoginADM" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round- large"
                     style="width: 90%;">Entrar</button>
             </div>
         </div>
     </form>
-
-
-
-
-
+    
 </body>
-
 </html>

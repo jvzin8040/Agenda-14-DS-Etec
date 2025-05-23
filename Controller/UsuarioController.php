@@ -48,7 +48,6 @@ class UsuarioController
         }
     }
 
-
  // Método para listar o usuário
     public function listaCadastrados()
     {
@@ -56,15 +55,12 @@ class UsuarioController
         $con = new ConexaoBD();
         $conn = $con->conectar();
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error); 
         }
-        $sql = "SELECT idusuario, nome FROM usuario;";
+        $sql = "SELECT idusuario, nome FROM usuario;"; 
         $re = $conn->query($sql);
         $conn->close();
         return $re;
     }
-
-
-
 
 }

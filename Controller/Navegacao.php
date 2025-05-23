@@ -170,6 +170,11 @@ switch ($_POST) {
         include_once '../View/ADMListarCadastrados.php';
         break;
 
+    //-Redirecionar: Admin: Listar Administradores Cadastrados -- //
+    case isset($_POST["btnListarADMCadastrados"]):
+        include_once '../View/ADMListarAdministradores.php';
+        break;
+
     //-Redirecionar: Cadastro Realizado -- //
     case isset($_POST["btnCadRealizado"]):
         include_once "../View/principal.php";

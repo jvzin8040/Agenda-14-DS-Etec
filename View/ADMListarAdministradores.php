@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Usuários Cadastrados</title>
+    <title>Gestores Cadastrados</title>
 </head>
 
 <body>
     <?php
-    include_once '../Model/Usuario.php';
-    include_once '../Controller/UsuarioController.php';
+    include_once '../Model/Administrador.php';
+    include_once '../Controller/AdministradorController.php';
     if (!isset($_SESSION)) {
         session_start();
     }
     ?>
 
     <header class="w3-container w3-padding-32 w3-center ">
-        <h1 class="w3-text-white w3-panel w3-cyan w3-round-large"> Lista de Usuários Cadastrados no Sistema</h1>
+        <h1 class="w3-text-white w3-panel w3-cyan w3-round-large"> Lista de Administradores Cadastrados no Sistema</h1>
     </header>
 
     <div class="w3-padding-128 w3-content w3-text-grey">
@@ -31,15 +31,17 @@
                     <tr class="w3-center w3-blue">
                         <th>Código</th>
                         <th>Nome</th>
+                        <th>CPF</th>
                     </tr>
                     <?php
-                    $usuario = new UsuarioController();
-                    $results = $usuario->listaCadastrados();
+                    $administrador = new AdministradorController();
+                    $results = $administrador->listaCadastrados();
                     if ($results != null)
                         while ($row = $results->fetch_object()) {
                             echo '<tr>';
-                            echo '<td style="width: 1%;">' . $row->idusuario . '</td>';
+                            echo '<td style="width: 1%;">' . $row->idadministrador . '</td>';
                             echo '<td style="width:50%;">' . $row->nome . '</td>';
+                            echo '<td style="width:50%;">' . $row->cpf . '</td>';
                             echo '</tr>';
                         }
                     ?>
