@@ -113,10 +113,10 @@ class FormacaoAcad
 
         $sql = "SELECT * FROM formacaoacademica WHERE idusuario = '" . $idusuario . "'";
        
-       // essa linha de verificação é diferente das outras
         $re = $conn->query($sql);
         $conn->close();
         return $re;
     }
 
+    
 }

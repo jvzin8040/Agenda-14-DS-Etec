@@ -29,7 +29,7 @@
         </div>
         <div class="w3-rest">
             <input class="w3-input w3-border w3-round-large" name="txtCPF"
-                type="number" placeholder="CPF: 33333333333">
+                type="text" maxlength="11" placeholder="CPF: 33333333333">
         </div>
     </div>
 

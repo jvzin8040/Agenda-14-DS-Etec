@@ -48,19 +48,73 @@ class UsuarioController
         }
     }
 
- // Método para listar o usuário
+    // Método para listar o usuário
     public function listaCadastrados()
     {
         require_once '../Model/ConexaoBD.php';
         $con = new ConexaoBD();
         $conn = $con->conectar();
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error); 
+            die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "SELECT idusuario, nome FROM usuario;"; 
+        $sql = "SELECT idusuario, nome FROM usuario;";
         $re = $conn->query($sql);
         $conn->close();
         return $re;
     }
 
+    public function buscarDadosCompletos($idusuario)
+    {
+        require_once '../Model/ConexaoBD.php';
+        require_once '../Model/Usuario.php';
+        require_once '../Model/FormacaoAcad.php';
+        require_once '../Model/ExperienciaProfissional.php';
+        require_once '../Model/OutrasFormacoes.php';
+
+        // Usuário
+        $usuarioObj = new Usuario();
+        $con = new ConexaoBD();
+        $conn = $con->conectar();
+        $sql = "SELECT * FROM usuario WHERE idusuario = " . intval($idusuario);
+        $result = $conn->query($sql);
+        $user = $result ? $result->fetch_assoc() : null;
+        $conn->close();
+
+        // Formação Acadêmica
+        $formacaoObj = new FormacaoAcad();
+        $formacoes = $formacaoObj->listaFormacoes($idusuario);
+        $listaFormacoes = [];
+        if ($formacoes) {
+            while ($row = $formacoes->fetch_assoc()) {
+                $listaFormacoes[] = $row;
+            }
+        }
+
+        // Experiência Profissional
+        $experienciaObj = new ExperienciaProf();
+        $experiencias = $experienciaObj->listaExperiencias($idusuario);
+        $listaExperiencias = [];
+        if ($experiencias) {
+            while ($row = $experiencias->fetch_assoc()) {
+                $listaExperiencias[] = $row;
+            }
+        }
+
+        // Outras Formações
+        $outrasObj = new OutrasFormacoes();
+        $outrasFormacoes = $outrasObj->listaFormacoes($idusuario);
+        $listaOutrasFormacoes = [];
+        if ($outrasFormacoes) {
+            while ($row = $outrasFormacoes->fetch_assoc()) {
+                $listaOutrasFormacoes[] = $row;
+            }
+        }
+
+        return [
+            'usuario' => $user,
+            'formacoes' => $listaFormacoes,
+            'experiencias' => $listaExperiencias,
+            'outras' => $listaOutrasFormacoes
+        ];
+    }
 }

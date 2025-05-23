@@ -9,9 +9,46 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Gestores Cadastrados</title>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .w3-table-all th {
+            background: #00bfd8 !important;
+            color: #fff !important;
+        }
+
+        .w3-table-all {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .visualizar-btn {
+            background: #00bfd8;
+            color: #fff !important;
+            border: none;
+            border-radius: 5px;
+            padding: 7px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .visualizar-btn:hover {
+            background: #009cb0;
+        }
+    </style>
 </head>
 
-<body>
+<body class="w3-light-grey">
     <?php
     include_once '../Model/Administrador.php';
     include_once '../Controller/AdministradorController.php';
@@ -33,6 +70,8 @@
                         <th>Nome</th>
                         <th>CPF</th>
                     </tr>
+                </thead>
+                <tbody>
                     <?php
                     $administrador = new AdministradorController();
                     $results = $administrador->listaCadastrados();
@@ -45,9 +84,7 @@
                             echo '</tr>';
                         }
                     ?>
-
-                </thead>
-
+                </tbody>
             </table>
         </div>
     </div>

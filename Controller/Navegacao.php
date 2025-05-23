@@ -160,6 +160,12 @@ switch ($_POST) {
         }
         break;
 
+    //-Redirecionar: Admin: Visualizar Usuário -- //
+    case isset($_POST["btnVisualizarUsuario"]):
+    $_SESSION['visualizar_idusuario'] = $_POST['idusuario'];
+    include_once "../View/ADMVisualizarCadastro.php";
+    break;
+
     //-Redirecionar: Admin: Login -- //   
     case isset($_POST["btnADM"]):
         include_once '../View/ADMLogin.php';

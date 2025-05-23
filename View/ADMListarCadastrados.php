@@ -9,9 +9,46 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Usuários Cadastrados</title>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .w3-table-all th {
+            background: #00bfd8 !important;
+            color: #fff !important;
+        }
+
+        .w3-table-all {
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .visualizar-btn {
+            background: #00bfd8;
+            color: #fff !important;
+            border: none;
+            border-radius: 5px;
+            padding: 7px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .visualizar-btn:hover {
+            background: #009cb0;
+        }
+    </style>
 </head>
 
-<body>
+<body class="w3-light-grey">
     <?php
     include_once '../Model/Usuario.php';
     include_once '../Controller/UsuarioController.php';
@@ -31,7 +68,10 @@
                     <tr class="w3-center w3-blue">
                         <th>Código</th>
                         <th>Nome</th>
+                        <th>Visualizar</th>
                     </tr>
+                </thead>
+                <tbody>
                     <?php
                     $usuario = new UsuarioController();
                     $results = $usuario->listaCadastrados();
@@ -40,12 +80,16 @@
                             echo '<tr>';
                             echo '<td style="width: 1%;">' . $row->idusuario . '</td>';
                             echo '<td style="width:50%;">' . $row->nome . '</td>';
+                            echo '<td style="width:20%;">';
+                            echo '<form action="../Controller/navegacao.php" method="post" style="margin:0;">';
+                            echo '<input type="hidden" name="idusuario" value="' . $row->idusuario . '">';
+                            echo '<button name="btnVisualizarUsuario" type="submit" class="visualizar-btn"><i class="fa fa-eye"></i> Visualizar</button>';
+                            echo '</form>';
+                            echo '</td>';
                             echo '</tr>';
                         }
                     ?>
-
-                </thead>
-
+                </tbody>
             </table>
         </div>
     </div>

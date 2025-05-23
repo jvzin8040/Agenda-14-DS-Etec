@@ -147,5 +147,16 @@ class Usuario
         }
     }
 
-   
+
+    public static function buscarPorId($idusuario)
+    {
+        require_once 'ConexaoBD.php';
+        $con = new ConexaoBD();
+        $conn = $con->conectar();
+        $sql = "SELECT * FROM usuario WHERE idusuario = " . intval($idusuario);
+        $result = $conn->query($sql);
+        $user = $result ? $result->fetch_assoc() : null;
+        $conn->close();
+        return $user;
+    }
 }

@@ -17,23 +17,23 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:11%"><i class="w3-xxlarge fa fa-user"></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border w3-round-large" name="txtLogin" type="text" maxlength="11" placeholder="Login CPF (Somente números)" required>
+                <input class="w3-input w3-border w3-round-large" name="txtLogin" type="text" maxlength="11" placeholder="Login CPF (Somente números)">
             </div>
         </div>
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:11%"><i class="w3-xxlarge fa fa-lock"></i></div>
             <div class="w3-rest">
-                <input class="w3-input w3-border w3-round-large" name="txtSenha" type="password" placeholder="Senha" required>
+                <input class="w3-input w3-border w3-round-large" name="txtSenha" type="password" placeholder="Senha">
             </div>
         </div>
         <div class="w3-row w3-section">
-            <div class="w3-half" style="">
+            <div class="w3-half">
                 <button name="btnLogin" class="w3-button w3-block w3-margin w3-blue w3-cell w3-roundlarge" style="width: 90%;">Entrar</button>
             </div>
             <div class="w3-half">
                 <button name="btnPrimeiroAcesso" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width: 90%;">Primeiro Acesso?</button>
             </div>
-            <div class="w3-center" style="">
+            <div class="w3-center">
                 <button name="btnADM" class=" w3-button w3-block w3-margin w3-blue w3-cell w3-round-large"
                     style="width: 90%; height:35px;">Login como Administrador</button>
             </div>
